@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+// 创建动态链表，并输出链表
+
+struct Node{
+	int data;
+	Node* next;
+};
+
+int main() {
+	int n;
+	cin >> n;
+
+	Node* head, * now, * p;
+	head = new Node; head->data = 1; head->next = NULL;
+	now = head;
+
+	int m;
+	for (int i = 1; i < n; i++) {
+		cin >> m;
+		p = new Node;
+		p->data = m;  p->next = NULL;
+		now->next = p; 
+		now = p;
+	}
+
+	Node* temp ;
+	temp = head;
+	while (temp != NULL) {
+		Node* nextNode = temp->next;
+		cout << temp->data << endl;
+		delete temp;
+		temp = nextNode;
+	}
+	return 0;
+}
